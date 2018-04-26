@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Header, Grid, Image} from 'semantic-ui-react';
+import { Header, Grid, Image, Divider} from 'semantic-ui-react';
 import image from '../assets/ANDREW.png'
+import test from '../assets/punch.png'
 
 const kaPow = ["Smack", "Kapow", "WHAM", "FLAP"]
 
@@ -31,19 +32,44 @@ class Home extends Component {
   }
 
   render() {
-    const {hits} = this.state
+    const {hits, x, y} = this.state
     return (
-      <div>
-        <Header as='h1' textAlign='center'>Hits: <br />{hits}</Header>
-        {this.state.message === "" ? 
-        null
-        :
-          <Header as="h2" textAlign='center'>{this.state.message}</Header>
-        }
-        <Image onMouseOver={this.hit} src={image} />
-
-      </div>
+      <Grid centered>
+        <Divider hidden />
+        <Image 
+          src={test} 
+          size='small' 
+          style={{
+            position: 'absolute',
+            padding: '0px !important',
+            left: x - 90,
+            top: y - 100,
+            zIndex: "2",
+          }} 
+        />
+        <Grid.Row>
+          <Header as='h1' textAlign='center'>Slap App</Header>
+        </Grid.Row>
+        <Grid.Row centered>
+          <Grid.Column width={4}>
+            {this.state.message === "" ?
+              null
+              :
+              <Header as="h2" textAlign='center'>{this.state.message}</Header>
+            }
+            <Image size='medium' onMouseOver={this.hit} src={image} />
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <Header as='h3' textAlign='center'>Hits:<br />{hits}</Header>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
+  }
+}
+const styles = {
+  image: {
+    position: 'absolute',
   }
 }
 
