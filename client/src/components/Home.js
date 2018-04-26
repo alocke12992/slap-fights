@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Header, Grid, Image, Divider} from 'semantic-ui-react';
 import image from '../assets/ANDREW.png'
-import test from '../assets/punch.png'
+import left from '../assets/left.png'
+import right from '../assets/right.png'
 
 const kaPow = ["Smack", "Kapow", "WHAM", "FLAP"]
 
@@ -19,7 +20,6 @@ class Home extends Component {
   hit = () => {
     const kaPow = ["Smack", "Kapow", "WHAM", "FLAP"]
     let rand = kaPow[Math.floor(Math.random() * kaPow.length)];
-    debugger
     const {hits} = this.state
     this.setState({ hits: hits + 1, message: rand})
     this.fadeSlap() 
@@ -37,7 +37,13 @@ class Home extends Component {
       <Grid centered>
         <Divider hidden />
         <Image 
-          src={test} 
+          src=
+          {
+            x > 400 ?
+            right
+            : 
+            left
+          } 
           size='small' 
           style={{
             position: 'absolute',
