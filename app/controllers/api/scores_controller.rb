@@ -1,7 +1,7 @@
 class Api::ScoresController < ApplicationController
 
   def index 
-    scores = Score.all
+    scores = Score.all.order(hits: :desc)
     render json: scores
   end 
 
@@ -17,6 +17,6 @@ class Api::ScoresController < ApplicationController
   private 
 
   def score_params
-    params.require(:scores).permit(:count, :username)
+    params.permit(:hits, :username)
   end
 end
