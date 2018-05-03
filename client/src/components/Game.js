@@ -8,7 +8,7 @@ import AddScore from './AddScore';
 const kaPow = ["Smack", "Kapow", "WHAM", "FLAP"]
 
 class Game extends Component {
-  state = {x: 250, y: 300, hits: 0, message: "", timer: 5}
+  state = {x: 250, y: 300, hits: 0, message: "", timer: 60}
 
   componentDidMount() {
     window.addEventListener('mousemove', this.handleMouseMove)
